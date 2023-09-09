@@ -1,0 +1,52 @@
+{% extends 'layout.html'%}
+{% block container %}
+           <form method="POST">
+               <h1>Add ToDo</h1><br>
+  <div class="mb-3">
+    <label for="title" class="form-label">Title</label>
+    <input type="text" class="form-control" name="title" id="title" required aria-describedby="title">
+  </div>   
+  <div class="mb-3">
+    <label for="des" class="form-label">Description</label>
+    <input type="text" class="form-control" name="des" id="des" required>
+  </div>
+  <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+            <br><hr>
+            <table class="table">
+  
+    {%if todos|length==0%}
+        <div class="alert alert-warning" role="alert">
+              No Todos Found, Add Your First Todo Now !!
+        </div>        
+    
+    {%else%}
+        
+    
+    <thead>
+    <tr>
+      <th scope="col">SNo</th>
+      <th scope="col">Title</th>
+      <th scope="col">Description</th>
+      <th scope="col">Date</th>
+      <th scope="col">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+  {% for todo in todos %}
+    <tr>  
+      <th scope="row">{{loop.index}}</th>
+      <td>{{todo.title}}</td>
+      <td>{{todo.des}}</td>
+      <td>{{todo.date}}</td>
+      <td>
+          <a href="/update/{{todo.sno}}" type="button"class="btn btn-outline-info btn-sm">Update</a>
+          <a href="/delete/{{todo.sno}}" type="button"class="btn btn-outline-info btn-sm">Delete</a>
+      </td>
+    </tr>
+  {%endfor%}
+  </tbody>
+  {%endif%}
+            </table>
+    
+{% endblock %}

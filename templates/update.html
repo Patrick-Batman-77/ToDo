@@ -1,0 +1,15 @@
+{% extends 'layout.html' %}
+{% block container %}
+    <form method="POST">
+  <div class="mb-3">
+    <h1>Update ToDo</h1><br>
+    <label for="title" class="form-label">Title</label>
+    <input type="text" class="form-control" value="{{todo.title}}"name="title" id="title" required aria-describedby="title">
+  </div>   
+  <div class="mb-3">
+    <label for="des" class="form-label">Description</label>
+    <input type="text" class="form-control" value="{{todo.des}}"name="des" id="des" required>
+  </div>
+  <button type="submit" class="btn btn-primary">Update</button>
+     </form>
+{% endblock %}
